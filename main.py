@@ -1,5 +1,15 @@
+from SummarizerText.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from SummarizerText.logging import logger
-from SummarizerText.constants import *
-from SummarizerText.utils.common import *
 
-logger.info('Welcome to custum logging')
+STAGE_NAME ='Data Ingestion stage'
+try:
+    logger.info(f'>>>>> stage{STAGE_NAME} started <<<<<<')
+    data_ingestion = DataIngestionTrainingPipeline()
+    data_ingestion.main()
+    logger.info(f'>>>>> stage{STAGE_NAME} completed <<<<\n\nx========x')
+
+except Exception as e:
+    logger.exception(e)
+    raise e    
+
+#logger.info('Welcome to custum logging')
